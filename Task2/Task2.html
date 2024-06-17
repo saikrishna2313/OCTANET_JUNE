@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Todo List App</title>
+<style>
+body {
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    background-color: #f0f0f0;
+}
+
+.todo-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 300px;
+}
+
+h1 {
+    text-align: center;
+}
+
+input[type="text"] {
+    width: calc(100% - 60px);
+    padding: 8px;
+    margin-bottom: 10px;
+}
+
+button {
+    padding: 8px 16px;
+    background-color: #4caf50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+li {
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #f9f9f9;
+    border-radius: 4px;
+}
+
+li:hover {
+    background-color: #f0f0f0;
+}
+</style>
+</head>
+<body>
+<div class="todo-container">
+    <h1>Todo List</h1>
+    <input type="text" id="todo-input" placeholder="Enter your task...">
+    <button id="add-btn">Add</button>
+    <ul id="todo-list"> <!-- Tasks will be added dynamically here -->
+    </ul>
+</div>
+
+<script>
+
+const input = document.getElementById('todo-input');
+const addButton = document.getElementById('add-btn');
+const todoList = document.getElementById('todo-list');
+
+addButton.addEventListener('click', function() {
+    const task = input.value.trim();
+    if (task !== '') {
+        addTodo(task);
+        input.value = '';
+    }
+});
+
+
+function addTodo(task) {
+    const li = document.createElement('li');
+    li.textContent = task;
+    todoList.appendChild(li);
+
+   
+    li.addEventListener('click', function() {
+        li.remove();
+    });
+}
+</script>
+</body>
+</html>
